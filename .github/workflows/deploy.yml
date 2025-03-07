@@ -1,4 +1,4 @@
-name: Deploy Frontend - ${{ github.event.head_commit.message }}
+name: Deploy Frontend
 
 on:
   push:
@@ -8,36 +8,37 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Add SSH key
+      - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/deploy_key
 
       - name: Deploy to server
         env:
-          SERVER_IP: ${{ secrets.SERVER_IP }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-          DEPLOY_PATH: /var/www/pindar/frontend
+          DEPLOY_PATH: /var/www/pindar
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "\
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
+            cd ${DEPLOY_PATH}/frontend && \
+            git pull origin main && \
             cd ${DEPLOY_PATH} && \
-            sudo git pull origin main && \
-            cd .. && \
-            sudo docker compose up -d --build frontend && \
-            sudo docker compose logs frontend"
+            docker compose up -d --build frontend && \
+            echo 'Waiting for container to start...' && \
+            sleep 10 && \
+            docker compose logs frontend --tail 50
+          "
 
-      - name: Send Discord Notification
+      - name: Notify Discord
         if: always()
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           if [ "${{ job.status }}" = "success" ]; then
-            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"✅ Frontend deployment successful! Commit: ${{ github.event.head_commit.message }}\"}" $DISCORD_WEBHOOK
+            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"✅ Frontend deployment successful!\"}" $DISCORD_WEBHOOK
           else
-            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"❌ Frontend deployment failed! Commit: ${{ github.event.head_commit.message }}\"}" $DISCORD_WEBHOOK
+            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"❌ Frontend deployment failed!\"}" $DISCORD_WEBHOOK
           fi
