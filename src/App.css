@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-red{
+  background: linear-gradient(353.92deg, #CC1C22 10.66%, #F86469 94.48%);
+  color: #fff;
+  height: 54px;
+  gap: 10px;
+  border-radius: 12px;
+}
