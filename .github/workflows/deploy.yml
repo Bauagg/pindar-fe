@@ -10,6 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -24,8 +30,10 @@ jobs:
         run: |
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
             cd ${DEPLOY_PATH}/frontend && \
-            git pull origin main && \
+            git fetch origin main && \
+            git reset --hard origin/main && \
             cd ${DEPLOY_PATH} && \
+            docker compose down frontend && \
             docker compose up -d --build frontend && \
             echo 'Waiting for container to start...' && \
             sleep 10 && \
@@ -38,7 +46,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           if [ "${{ job.status }}" = "success" ]; then
-            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"✅ Frontend deployment successful!\"}" $DISCORD_WEBHOOK
+            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"✅ Frontend deployment successful! Visit: https://pindar.id\"}" $DISCORD_WEBHOOK
           else
             curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"❌ Frontend deployment failed!\"}" $DISCORD_WEBHOOK
           fi
