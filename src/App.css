@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/lexend-deca');
+
 .App {
   text-align: center;
 }
@@ -37,10 +39,88 @@
   }
 }
 
+.bg-arrow{
+  background-image: url('../public/img/arrow-nav.png');
+  background-repeat: no-repeat;
+  background-position: 80%;
+  background-clip: border-box;
+  background-size: 13%;
+}
+
+.navbar-radius{
+  border-bottom-right-radius: 32px;
+  border-bottom-left-radius: 32px;
+}
+
+.title-popular{
+  font-family: 'Lexend', sans-serif;
+  font-weight: 700;
+  line-height: 145%;
+  letter-spacing: 0%;
+}
+.title-life{
+  font-family: 'Lexend', sans-serif;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.title-trending{
+  font-family: 'Lexend', sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
 .btn-red{
   background: linear-gradient(353.92deg, #CC1C22 10.66%, #F86469 94.48%);
   color: #fff;
   height: 54px;
   gap: 10px;
   border-radius: 12px;
+}
+
+.bg-red-white{
+  width: 96px;
+  height: 95px;
+  border-radius: 24px;
+  background: linear-gradient(172.52deg, rgba(204, 28, 34, 0.89) 5.8%, rgba(204, 28, 34, 0.04) 78.66%);
+}
+
+.menu-icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+.menu-label {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin-top: 5px;
+}
+.trending {
+  height: 138px;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding-top: 40px;
+  padding-right: 39px;
+  padding-bottom: 40px;
+  padding-left: 39px;
+  background: #CC1C22;
+  color: #fff;
+}
+.trending .btn {
+  border: 1px solid #FFFFFF;
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  width: 137px;
+  height: 49px;
+  border-radius: 16px;
+  gap: 4px;
+}
+.bg-banner{
+  border-radius: 30px;
+  gap: 24px;
+  background: linear-gradient(135deg, #E05057 0%, #B02A30 100%);  
 }

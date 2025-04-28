@@ -6,8 +6,8 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-danger px-3">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-light bg-danger px-3 navbar-radius">
+      <div className="container-fluid bg-arrow">
         {/* Logo */}
         <a className="navbar-brand text-white" href="#">
           <img src="/logo-pindar.png" alt="Logo" width={50} className="me-2" />
