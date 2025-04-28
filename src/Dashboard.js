@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import Navbars from "./component/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    
+    const navigate = useNavigate();
+
+    const handlePindar = () => {
+        // Setelah login berhasil
+        navigate("/pindar");
+    };
   return (
     <div>
         <Navbars />
@@ -13,11 +19,11 @@ const Login = () => {
                 <div className="row">
                     <div className="col-6 mx-auto">
                         <div className="d-flex justify-content-around">
-                            <div>
+                            <div onClick={handlePindar} style={{cursor: 'pointer'}}>
                                 <div className="bg-red-white">
                                     <img src="../img/pindar.png" ></img>
                                 </div>
-                                <h4 className="title-life mt-4" style={{color: '#474864'}}>Pindar</h4>
+                                <h4 className="title-life mt-4" style={{color: '#474864'}} >Pindar</h4>
                             </div>
                             <div>
                                 <div className="bg-red-white">
