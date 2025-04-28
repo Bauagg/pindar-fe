@@ -28,6 +28,13 @@ const Pindar = () => {
           maksimalLamaPinjam: "24 Bulan",
           img: "../img/easycash.png",
         },
+        {
+          id: 4,
+          nama: "Shopee SPinjam",
+          maksimalPinjaman: "Rp 50.000.000",
+          maksimalLamaPinjam: "24 Bulan",
+          img: "../img/shopee.png",
+        },
       ];
 
       const handleCheckboxChange = (item) => {
@@ -55,7 +62,7 @@ const Pindar = () => {
 
             <div className="conatiner-fluid mt-5 container-page">
                 <div className="row">
-                    <div className="col-sm-3">
+                    <div className="col-sm-2">
                         <div className="card-filter">
                             <div className="d-flex justify-content-between mb-3">
                                 <h4><b>Filter</b></h4>
@@ -129,14 +136,14 @@ const Pindar = () => {
                         </div>
                     </div>
 
-                    <div className="col-sm-9">
+                    <div className="col-sm-10">
                     {dataPindar.map((item) => (
                         <div key={item.id} className="card-pindar mb-3">
                             <div className="row">
                                 <div className="col-sm-10 px-4 py-3">
                                 <div className="row">
                                     <div className="col-sm-4 d-flex">
-                                    <img src={item.img} className="img-fluid" alt="logo" />
+                                    <img src={item.img} className="img-fluid" style={{width: '61px'}} alt="logo" />
                                     <h6 className="mx-3 my-auto">
                                         <b>{item.nama}</b>
                                     </h6>
