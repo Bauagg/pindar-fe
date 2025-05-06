@@ -1,4 +1,4 @@
-name: Deploy Frontend
+name: Deploy frontend
 
 on:
   push:
@@ -9,6 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Get commit details
+        id: commit
+        run: |
+          echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+          echo "author=$(git log -1 --pretty=%an)" >> $GITHUB_OUTPUT
+          echo "sha=$(git log -1 --pretty=%h)" >> $GITHUB_OUTPUT
+          echo "date=$(git log -1 --pretty=%cd --date=format:'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
 
       - name: Setup SSH
         run: |
@@ -23,7 +31,7 @@ jobs:
           DEPLOY_PATH: /var/www/pindar
         run: |
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
-            cd ${DEPLOY_PATH}/frontend && \
+            cd ${DEPLOY_PATH}/frontend/pindar-fe && \
             git fetch origin main && \
             git reset --hard origin/main && \
             cd ${DEPLOY_PATH} && \
@@ -31,17 +39,45 @@ jobs:
             docker system prune -f && \
             docker compose up -d --build frontend && \
             echo 'Waiting for container to start...' && \
-            sleep 20 && \
+            sleep 10 && \
             docker compose logs frontend --tail 50
           "
-
+            
       - name: Notify Discord
         if: always()
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           if [ "${{ job.status }}" = "success" ]; then
-            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"✅ Frontend deployment successful!\"}" $DISCORD_WEBHOOK
+            curl -H "Content-Type: application/json" -X POST -d '{
+              "embeds": [{
+                "title": "✅ Frontend Deployment Successful",
+                "color": 3066993,
+                "fields": [
+                  {"name": "Repository", "value": "pindar-frontend", "inline": true},
+                  {"name": "Branch", "value": "main", "inline": true},
+                  {"name": "Commit", "value": "${{ steps.commit.outputs.sha }}", "inline": true},
+                  {"name": "Author", "value": "${{ steps.commit.outputs.author }}", "inline": true},
+                  {"name": "Date", "value": "${{ steps.commit.outputs.date }}", "inline": true},
+                  {"name": "Message", "value": "${{ steps.commit.outputs.message }}"}
+                ],
+                "footer": {"text": "Deployed to production"}
+              }]
+            }' $DISCORD_WEBHOOK
           else
-            curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"❌ Frontend deployment failed!\"}" $DISCORD_WEBHOOK
+            curl -H "Content-Type: application/json" -X POST -d '{
+              "embeds": [{
+                "title": "❌ Frontend Deployment Failed",
+                "color": 15158332,
+                "fields": [
+                  {"name": "Repository", "value": "pindar-frontend", "inline": true},
+                  {"name": "Branch", "value": "main", "inline": true},
+                  {"name": "Commit", "value": "${{ steps.commit.outputs.sha }}", "inline": true},
+                  {"name": "Author", "value": "${{ steps.commit.outputs.author }}", "inline": true},
+                  {"name": "Date", "value": "${{ steps.commit.outputs.date }}", "inline": true},
+                  {"name": "Message", "value": "${{ steps.commit.outputs.message }}"}
+                ],
+                "footer": {"text": "Deployment failed - check logs for details"}
+              }]
+            }' $DISCORD_WEBHOOK
           fi
