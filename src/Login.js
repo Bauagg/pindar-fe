@@ -15,9 +15,9 @@ const Login = () => {
                     <img src="/logo-pindar.png" alt="Logo" className="mb-3" width={80} />
                     <h3 className="mb-4">Sign in</h3>
                     <form>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"><i className="bi bi-envelope" style={{ fontSize: 'x-large' }}></i></span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" id="basic-addon1"><i className="bi bi-envelope" style={{ fontSize: 'x-large' }}></i></span>
+                        <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                     <div className="input-group mb-3">
                         {/* Icon Lock */}

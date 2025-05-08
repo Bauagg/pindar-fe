@@ -224,3 +224,60 @@ body{
   padding: "10px 20px";
   z-index: 1000;
 }
+
+.img-detail{
+  width: 192px;
+  height: 192px;
+  border-radius: 29px;
+}
+
+.tab-detail{
+  gap: 10px;
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  border-radius: 12px;
+  background: linear-gradient(353.92deg, #CC1C22 10.66%, #F86469 94.48%);
+  color: #fff;
+  border: none;
+  font-family: 'Lexend', sans-serif !important;
+}
+
+.active {
+  background: #0000000A !important;
+  color: #474864;
+}
+
+
+.card-detail{
+  gap: 27px;
+  border-radius: 28px;
+  padding-top: 58px;
+  padding-right: 31px;
+  padding-bottom: 58px;
+  padding-left: 31px;
+  box-shadow: -2px 2px 36.4px 0px #00000024;
+  background: #FFFFFF;
+}
+
+.btn-detail-ajukan{
+  gap: 4px;
+  border-radius: 16px;
+  padding-top: 26px;
+  padding-right: 48px;
+  padding-bottom: 26px;
+  padding-left: 48px;
+  background: linear-gradient(353.92deg, #CC1C22 10.66%, #F86469 94.48%);
+  color: #fff;
+}
+
+.card-detail-isi{
+  gap: 28px;
+  border-radius: 26px;
+  padding-top: 52px;
+  padding-right: 42px;
+  padding-bottom: 52px;
+  padding-left: 42px;
+  background: #0000000A;
+}

@@ -1,16 +1,19 @@
 import React, { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
-import api from "./component/axiosConfig"; // Import axios instance
-import Navbars from "./component/Navbar";
+import '../App.css';
+import api from "../component/axiosConfig"; // Import axios instance
+import Navbars from "../component/Navbar";
 
 const Pindar = () => {
+  
+    const navigate = useNavigate();
     const [selectedItems, setSelectedItems] = useState([]);
 
     const [search, setSearch] = useState("");
     const [limit, setLimit] = useState(5);
     const [offset, setOffset] = useState(0);
-    const [total, setTotal] = useState(0);  
+    const [totalData, setTotalData] = useState(0);
     const [dataPindar, setDataPindar] = useState([]);
 
     const [selectedPayments, setSelectedPayments] = useState([]);
@@ -20,22 +23,26 @@ const Pindar = () => {
     const [selectedLoanAmounts, setSelectedLoanAmounts] = useState([]);
 
       
-      const fetchdatas = async () => {
-        try {
-          const response = await api.get(`lender/list?limit=5&offset=0&search=&sortBy=maxloan&sortDirection=${selectedPlafond}&loanType=${selectedLoanAmounts}&paymentType=${selectedPayments}`, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          
-          // Ambil hanya data customer
-          setDataPindar(response.data.data.lenders);
-          console.log(dataPindar);
-          
-        } catch (error) {
-          console.error("Error fetching datas:", error);
-        }
-      };
+    const fetchdatas = async () => {
+      try {
+        const response = await api.get(`lender/list?limit=${limit}&offset=${offset}&search=${search}&sortBy=maxloan&sortDirection=${selectedPlafond}&loanType=${selectedLoanAmounts}&paymentType=${selectedPayments}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        console.log(response.data);
+        
+        setDataPindar(response.data.data.lenders);
+        setTotalData(response.data.data.pagination.total); // Pastikan API mengembalikan total data
+      } catch (error) {
+        console.error("Error fetching datas:", error);
+      }
+    };
+    
+    const handleSearch = (e) => {
+      setSearch(e.target.value);
+      setOffset(0); // Reset ke halaman pertama saat mencari
+    };
 
       const fetchpayments = async () => {
         try {
@@ -151,10 +158,16 @@ const Pindar = () => {
           }
         }
       };
+    
+      const handleDetail = (item) => {
+        sessionStorage.setItem('idPindar', item.id);
+        navigate("/pindardetail"); // pastikan useNavigate dari react-router-dom
+      };
+      
 
   return (
     <div>
-        <Navbars />
+        <Navbars search={search} onSearchChange={handleSearch} />
         <div className="bg-light">
             <div className="container-fluid card-shadow">
                 <h5 className="text-popins">Home &gt; Pinjaman &gt; Semua Pinjaman</h5>
@@ -244,9 +257,9 @@ const Pindar = () => {
                                 <h4><b>Urutkan</b></h4>
                                 <button type="button" className="btn"><small className="text-red">Select All</small></button>
                             </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input form-red" type="checkbox" value="" id="produkp"/>
-                                <label class="form-check-label" for="produkp">
+                            <div className="form-check mb-2">
+                                <input className="form-check-input form-red" type="checkbox" value="" id="produkp"/>
+                                <label className="form-check-label" for="produkp">
                                 Produk Pilihan
                                 </label>
                             </div>
@@ -306,14 +319,18 @@ const Pindar = () => {
                                     </h4>
                                     </div>
                                     <div className="col-12 mt-4">
-                                    <button type="button" className="btn btn-abu-abu w-100">
-                                        <b>
+                                    <button
+                                      type="button"
+                                      className="btn btn-abu-abu w-100"
+                                      onClick={() => handleDetail(item)} // ← penting: gunakan arrow function
+                                    >
+                                      <b>
                                         Lihat Detail{" "}
                                         <i
-                                            className="bi bi-box-arrow-up-right"
-                                            style={{ color: "#CC1C22" }}
+                                          className="bi bi-box-arrow-up-right"
+                                          style={{ color: "#CC1C22" }}
                                         ></i>
-                                        </b>
+                                      </b>
                                     </button>
                                     </div>
                                 </div>
@@ -341,6 +358,28 @@ const Pindar = () => {
                             </div>
                         </div>
                     ))}
+                    <div className="d-flex justify-content-between mt-3">
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => setOffset(prev => Math.max(prev - limit, 0))}
+                        disabled={offset === 0}
+                      >
+                        Previous
+                      </button>
+
+                      <span className="my-auto">
+                        Page {Math.floor(offset / limit) + 1} of {Math.ceil(totalData / limit)}
+                      </span>
+
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => setOffset(prev => (prev + limit < totalData ? prev + limit : prev))}
+                        disabled={offset + limit >= totalData}
+                      >
+                        Next
+                      </button>
+                    </div>
+
                     </div>
                 </div>
                 {/* Bar Bandingkan */}

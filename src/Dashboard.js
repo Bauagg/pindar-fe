@@ -35,22 +35,22 @@ const Login = () => {
                     </div>
                 </div>
 
-                <div class="trending mt-5">
-                    <div class="d-flex justify-content-between align-items-center">
+                <div className="trending mt-5">
+                    <div className="d-flex justify-content-between align-items-center">
                         <div>
                             <h5 className="title-trending">Trending Products</h5>
                             <small>Last Date 29/02/2025</small>
                         </div>
-                        <button class="btn btn-sm">
+                        <button className="btn btn-sm">
                             View all →
                         </button>
                     </div>
                 </div>
 
                 <div className="mt-4">
-                    <h6 class="ms-4">Popular Plus</h6>
-                    <div class="card-body bg-banner">
-                        <div class="row">
+                    <h6 className="ms-4">Popular Plus</h6>
+                    <div className="card-body bg-banner">
+                        <div className="row">
                             <div className="col-4">
                                 <img src="../img/family.png" alt="family"  className="img-fluid"/>
                             </div>
@@ -60,10 +60,10 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                    <div className="dots">
+                        <span className="dot active"></span>
+                        <span className="dot"></span>
+                        <span className="dot"></span>
                     </div>
                 </div>
                 

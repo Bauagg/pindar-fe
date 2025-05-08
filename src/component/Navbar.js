@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css"; // Import Bootstrap Icons
 
-const Navbar = () => {
+const Navbar = ({search, onSearchChange}) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-danger px-3 navbar-radius bg-arrow">
       <div className="container-fluid">
         {/* Logo */}
-        <a className="navbar-brand text-white" href="#">
+        <a className="navbar-brand text-white" href="/">
           <img src="/logo-pindar.png" alt="Logo" width={50} className="me-2" />
         </a>
 
@@ -36,6 +36,8 @@ const Navbar = () => {
                   className="form-control me-2"
                   type="search"
                   placeholder="Search here..."
+                  value={search}
+                  onChange={onSearchChange}
                 />
               </form>
               <div className="d-flex">
