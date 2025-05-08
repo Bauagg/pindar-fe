@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/pindar" element={<Pindar />} />
-        <Route path="/pindarcompare" element={<PindarCompare />} />
+        <Route path="/pindarcompere" element={<PindarCompare />} />
         <Route path="/pindardetail" element={<PindarDetail />} />
         <Route path="/pindarajukan" element={<PindarAjukan />} />
         <Route path="/login" element={<Login />} />

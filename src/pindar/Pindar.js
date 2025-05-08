@@ -164,6 +164,17 @@ const Pindar = () => {
         navigate("/pindardetail"); // pastikan useNavigate dari react-router-dom
       };
       
+      const handleAjukan = (item) => {
+        sessionStorage.setItem('linkdetail', item.directLink);
+        sessionStorage.setItem('lendername', item.lendername);
+        sessionStorage.setItem('imgdetail', `https://be.pindar.id${item.imagelink}`);
+        navigate("/pindarajukan"); // pastikan useNavigate dari react-router-dom
+      };
+
+      const handleCompere = (item) => {
+        sessionStorage.setItem('dataCompere', JSON.stringify(item));
+        navigate("/pindarcompere"); // pastikan useNavigate dari react-router-dom
+      };
 
   return (
     <div>
@@ -351,7 +362,7 @@ const Pindar = () => {
                                     Bandingkan
                                     </label>
                                 </div>
-                                <button type="button" className="btn btn-red">
+                                <button type="button" className="btn btn-red" onClick={() => handleAjukan(item)}>
                                     <b>Ajukan Sekarang</b>
                                 </button>
                                 </div>
@@ -420,7 +431,7 @@ const Pindar = () => {
                             </div>
                         </div>
                         <div className="col-sm-4 text-end">
-                        <button className="btn btn-red mx-2" style={{width: '130px', height: '42px'}}>Bandingkan</button>
+                        <button className="btn btn-red mx-2" style={{width: '130px', height: '42px'}} onClick={() => handleCompere(selectedItems)}>Bandingkan</button>
                         <button
                             className="btn btn-outline-danger px-3"
                             style={{width: '130px', height: '42px'}}

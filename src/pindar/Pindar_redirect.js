@@ -1,12 +1,9 @@
 import React, { useState,useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../App.css';
-import api from "../component/axiosConfig"; // Import axios instance
 import Navbars from "../component/Navbar";
 
 const PindarAjukan = () => {
-  const navigate = useNavigate();
   const [count, setCount] = useState(5);
   const link = sessionStorage.getItem('linkdetail');
   const img = sessionStorage.getItem('imgdetail');

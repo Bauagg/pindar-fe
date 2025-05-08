@@ -281,3 +281,16 @@ body{
   padding-left: 42px;
   background: #0000000A;
 }
+
+.tr-style{
+  box-shadow: 5px 2px 9.4px 0px #000000A1 !important;
+}
+
+.td-style-label{
+  border: 1px solid #00000029 !important;
+  box-shadow: 5px 2px 9.4px 0px #000000A1 !important;
+  width: 30%;
+}
+.td-style-isi{
+  background: #16010105 !important;
+}
