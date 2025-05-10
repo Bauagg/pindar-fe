@@ -48,7 +48,7 @@ const CCCompare = () => {
     <tr>
       <th className="td-style-label">{label}</th>
       {compareData.map((item, index) => {
-        if (key === 'maxLoan') {
+        if (key === 'yearlyFee' || key === 'additionalCardAnnualFee' || key === 'yearlyIncomeMinimum' || key === 'monthlyIncomeMinimum') {
           return (
             <td className="td-style-isi" key={index}>
               {formatRupiah(item[key]) || '-'}
@@ -58,6 +58,12 @@ const CCCompare = () => {
           return (
             <td className="td-style-isi" key={index}>
               <a href={item[key] || '-'} target="_blank">Open Link</a>
+            </td>
+          );
+        } else if (key === 'type' || key === 'publisher') {
+          return (
+            <td className="td-style-isi" key={index}>
+              {item[key]?.name || '-'}
             </td>
           );
         } else{
@@ -83,8 +89,8 @@ const CCCompare = () => {
   const handleDetail = (item) => {
     console.log(item.id);
     
-    sessionStorage.setItem('idPindar', item.id);
-    navigate("/pindardetail"); // pastikan useNavigate dari react-router-dom
+    sessionStorage.setItem('idCC', item.id);
+    navigate("/ccdetail"); // pastikan useNavigate dari react-router-dom
   };
 
   return (
@@ -132,8 +138,8 @@ const CCCompare = () => {
                   {renderRow('Informasi Tambahan', 'detailInformation')}
                   {renderRow('Tutorial Pembayaran', 'billPaymentTutorial')}
                   {renderRow('Dokumen Persyaratan', 'termsDocument')}
-                  {renderRow('Tipe Kartu', 'type.name')}
-                  {renderRow('Penerbit', 'publisher.name')}
+                  {renderRow('Tipe Kartu', 'type')}
+                  {renderRow('Penerbit', 'publisher')}
 
                   </tbody>
                 </table>
