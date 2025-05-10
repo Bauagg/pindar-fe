@@ -7,9 +7,15 @@ const PindarAjukan = () => {
   const [count, setCount] = useState(5);
   const link = sessionStorage.getItem('linkdetail');
   const img = sessionStorage.getItem('imgdetail');
-  const lendername = sessionStorage.getItem('lendername');
+  const lendername = sessionStorage.getItem('titlecc');
   
   useEffect(() => {
+    if (!link) {
+      // Jika link tidak ditemukan di sessionStorage, arahkan ke halaman CC
+      window.location.href = '/cc'; // sesuaikan dengan route halaman CC kamu
+      return;
+    }
+  
     const timer = setInterval(() => {
       setCount((prev) => {
         if (prev === 1) {
@@ -19,11 +25,17 @@ const PindarAjukan = () => {
         return prev - 1;
       });
     }, 1000);
-
+  
     return () => clearInterval(timer);
   }, [link]);
+  
 
   const handleClick = () => {
+    if (!link) {
+      // Jika link tidak ditemukan di sessionStorage, arahkan ke halaman CC
+      window.location.href = '/cc'; // sesuaikan dengan route halaman CC kamu
+      return;
+    }
     window.location.href = link;
   };
 

@@ -294,3 +294,62 @@ body{
 .td-style-isi{
   background: #16010105 !important;
 }
+
+.custom-slider {
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.custom-track {
+  background: #cc1c22;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.custom-thumb {
+  height: 20px;
+  width: 20px;
+  background-color: #cc1c22;
+  border-radius: 50%;
+  cursor: grab;
+  top: -6px;
+  position: absolute;
+  z-index: 2;
+  border: 2px solid white; /* optional: biar lebih menonjol */
+  transition: transform 0.2s ease;
+}
+
+.custom-thumb:focus,
+.custom-thumb:active {
+  background-color: #cc1c22; /* tetap merah saat aktif */
+  outline: none;
+  transform: scale(1.1); /* opsional efek membesar saat aktif */
+}
+
+.accordion-section {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8.6px 0px #00000021;
+}
+.accordion-section:first-child {
+  border-top: none;
+}
+.accordion-section button {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 12px;
+  background: #0000000A;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.accordion-content {
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+}

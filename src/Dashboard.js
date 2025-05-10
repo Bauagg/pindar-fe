@@ -11,6 +11,10 @@ const Login = () => {
         // Setelah login berhasil
         navigate("/pindar");
     };
+    const handleCC = () => {
+        // Setelah login berhasil
+        navigate("/cc");
+    };
   return (
     <div>
         <Navbars />
@@ -25,7 +29,7 @@ const Login = () => {
                                 </div>
                                 <h4 className="title-life mt-4" style={{color: '#474864'}} >Pindar</h4>
                             </div>
-                            <div>
+                            <div onClick={handleCC} style={{cursor: 'pointer'}}>
                                 <div className="bg-red-white">
                                     <img src="../img/cc.png" ></img>
                                 </div>
