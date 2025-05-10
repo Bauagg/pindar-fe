@@ -6,7 +6,7 @@ import api from "../component/axiosConfig"; // Import axios instance
 import Navbars from "../component/Navbar";
 import ReactSlider from "react-slider";
 
-const Pindar = () => {
+const DataCC = () => {
   
     const navigate = useNavigate();
     const [selectedItems, setSelectedItems] = useState([]);
@@ -187,8 +187,8 @@ const Pindar = () => {
         <Navbars search={search} onSearchChange={handleSearch} />
         <div className="bg-light">
             <div className="container-fluid card-shadow">
-                <h5 className="text-popins">Home &gt; Pinjaman &gt; Semua Pinjaman</h5>
-                <h3 className="title-lexend">Pinjaman</h3>
+                <h5 className="text-popins">Home &gt; Credit Card &gt; Semua Credit Card</h5>
+                <h3 className="title-lexend">Credit Card</h3>
             </div>
 
             <div className="conatiner-fluid mt-5 container-page">
@@ -520,4 +520,4 @@ const Pindar = () => {
   );
 };
 
-export default Pindar;
+export default DataCC;

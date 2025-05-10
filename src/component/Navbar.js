@@ -41,16 +41,16 @@ const Navbar = ({search, onSearchChange}) => {
                 />
               </form>
               <div className="d-flex">
-                <a href="#" className="text-white me-3">
+                <a href="/" className="text-white me-3">
                     <i className="bi bi-house" style={{ fontSize: 'x-large' }}></i>
                 </a>
-                <a href="#" className="text-white me-3">
+                <a href="/cc" className="text-white me-3">
                     <i className="bi bi-credit-card" style={{ fontSize: 'x-large' }}></i>
                 </a>
-                <a href="#" className="text-white me-3">
+                <a href="/pindar" className="text-white me-3">
                     <i className="bi bi-wallet2" style={{ fontSize: 'x-large' }}></i>
                 </a>
-                <a href="#" className="text-white me-3">
+                <a href="/notifikasi" className="text-white me-3">
                     <i className="bi bi-bell" style={{ fontSize: 'x-large' }}></i>
                 </a>
               </div>

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '../App.css';
 import Navbars from "../component/Navbar";
 
-const PindarAjukan = () => {
+const CCAjukan = () => {
   const [count, setCount] = useState(5);
   const link = sessionStorage.getItem('linkdetail');
   const img = sessionStorage.getItem('imgdetail');
@@ -83,4 +83,4 @@ const PindarAjukan = () => {
   );
 };
 
-export default PindarAjukan;
+export default CCAjukan;

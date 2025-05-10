@@ -353,3 +353,12 @@ body{
   background: #fff;
   border-radius: 12px;
 }
+
+.card-notif{
+  top: 333px;
+  left: 497px;
+  border-radius: 12px;
+  gap: 29px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

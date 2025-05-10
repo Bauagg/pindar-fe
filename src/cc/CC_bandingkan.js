@@ -5,7 +5,7 @@ import '../App.css';
 import api from "../component/axiosConfig"; // Import axios instance
 import Navbars from "../component/Navbar";
 
-const PindarCompare = () => {
+const CCCompare = () => {
   const navigate = useNavigate();
   const [compareData, setCompareData] = useState([]);
   const baseURL = "https://be.pindar.id/api";
@@ -144,4 +144,4 @@ const PindarCompare = () => {
   );
 };
 
-export default PindarCompare;
+export default CCCompare;

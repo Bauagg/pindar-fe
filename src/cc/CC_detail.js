@@ -5,7 +5,7 @@ import '../App.css';
 import api from "../component/axiosConfig"; // Import axios instance
 import Navbars from "../component/Navbar";
 
-const PindarDetail = () => {
+const CCDetail = () => {
     const navigate = useNavigate();
     const [dataCC, setdataCC] = useState({});
     const id = sessionStorage.getItem('idCC');
@@ -178,4 +178,4 @@ const PindarDetail = () => {
   );
 };
 
-export default PindarDetail;
+export default CCDetail;
