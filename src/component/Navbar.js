@@ -47,7 +47,7 @@ const Navbar = ({search, onSearchChange}) => {
                 <a href="/cc" className="text-white me-3">
                     <i className="bi bi-credit-card" style={{ fontSize: 'x-large' }}></i>
                 </a>
-                <a href="/pindar" className="text-white me-3">
+                <a href="/education" className="text-white me-3">
                     <i className="bi bi-wallet2" style={{ fontSize: 'x-large' }}></i>
                 </a>
                 <a href="/notifikasi" className="text-white me-3">
