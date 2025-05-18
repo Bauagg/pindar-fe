@@ -14,6 +14,9 @@ import CCCompare from "./cc/CC_bandingkan";
 import CCDetail from "./cc/CC_detail";
 import CCAjukan from "./cc/CC_redirect";
 
+import Education from "./education/Education";
+import EducationDetail from "./education/Education_detail";
+
 function App() {
   return (
     <Router>
@@ -30,6 +33,9 @@ function App() {
         <Route path="/cccompere" element={<CCCompare />} />
         <Route path="/ccdetail" element={<CCDetail />} />
         <Route path="/ccajukan" element={<CCAjukan />} />
+        
+        <Route path="/education" element={<Education />} />
+        <Route path="/educationdetail" element={<EducationDetail />} />
         
         <Route path="/login" element={<Login />} />
       </Routes>
