@@ -50,6 +50,9 @@ const Navbar = ({search, onSearchChange}) => {
                 <a href="/education" className="text-white me-3">
                     <i className="bi bi-wallet2" style={{ fontSize: 'x-large' }}></i>
                 </a>
+                <a href="/pindar" className="text-white me-3">
+                    <i className="bi bi-cash-coin" style={{ fontSize: 'x-large' }}></i>
+                </a>
                 <a href="/notifikasi" className="text-white me-3">
                     <i className="bi bi-bell" style={{ fontSize: 'x-large' }}></i>
                 </a>
@@ -59,36 +62,17 @@ const Navbar = ({search, onSearchChange}) => {
             {/* Kolom User Info & Avatar */}
             <div className="col-lg-4 d-flex justify-content-end align-items-center">
               <div className="text-end me-2">
-                <h4 className="text-white mb-0">Hi Putri!</h4>
-                <p className="text-white mb-0">Jakarta, Indonesia</p>
+                <a href="/tnc" className="text-white me-3">
+                    Terms & Condition
+                </a>
+                <a href="/privacypolicy" className="text-white me-3">
+                    Privacy Policy
+                </a>
+                <a href="/aboutus" className="text-white me-3">
+                    About Us
+                </a>
               </div>
 
-              {/* Avatar dengan Dropdown */}
-              <div
-                className="position-relative d-flex align-items-center"
-                style={{ cursor: "pointer" }}
-                onClick={() => setShowDropdown(!showDropdown)}
-              >
-                <img
-                  src="/avatar-10.jpg"
-                  alt="User Avatar"
-                  width={50}
-                  className="rounded-circle"
-                />
-                {/* Ikon Panah */}
-                <i
-                 className={showDropdown ? 'bi bi-caret-up-fill text-white ms-2' : 'bi bi-caret-down-fill text-white ms-2'}
-                ></i>
-
-                {/* Dropdown Menu */}
-                {showDropdown && (
-                  <div className="position-absolute top-100 start-50 translate-middle-x mt-2 bg-white shadow rounded p-3" style={{ width: "150px" }}>
-                    <a href="#" className="d-block text-dark text-decoration-none px-3 py-2">Profile</a>
-                    <a href="#" className="d-block text-dark text-decoration-none px-3 py-2">Settings</a>
-                    <a href="#" className="d-block text-dark text-decoration-none px-3 py-2">Logout</a>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         </div>

@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Notifikasi from "./Notifikasi";
+import TandC from "./TnC";
+import PrivacyPolis from "./PrivacyPolict";
+import AboutUs from "./Aboutus";
 
 import Pindar from "./pindar/Pindar";
 import PindarCompare from "./pindar/Pindar_bandingkan";
@@ -23,6 +26,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/notifikasi" element={<Notifikasi />} />
+        <Route path="/tnc" element={<TandC />} />
+        <Route path="/privacypolicy" element={<PrivacyPolis />} />
+        <Route path="/aboutus" element={<AboutUs />} />
 
         <Route path="/pindar" element={<Pindar />} />
         <Route path="/pindarcompere" element={<PindarCompare />} />
