@@ -23,13 +23,13 @@ const Login = () => {
                 <div className="row">
                     <div className="col-6 mx-auto">
                         <div className="d-flex justify-content-around">
-                            <div onClick={handlePindar} style={{cursor: 'pointer'}}>
+                            <div onClick={handlePindar} className="mx-2" style={{cursor: 'pointer'}}>
                                 <div className="bg-red-white">
                                     <img src="../img/pindar.png" ></img>
                                 </div>
                                 <h4 className="title-life mt-4" style={{color: '#474864'}} >Pindar</h4>
                             </div>
-                            <div onClick={handleCC} style={{cursor: 'pointer'}}>
+                            <div onClick={handleCC} className="mx-2" style={{cursor: 'pointer'}}>
                                 <div className="bg-red-white">
                                     <img src="../img/cc.png" ></img>
                                 </div>
@@ -52,7 +52,7 @@ const Login = () => {
                 </div>
 
                 <div className="mt-4">
-                    <h6 className="ms-4">Popular Plus</h6>
+                    <h5 className="ms-4">Popular Plus</h5>
                     <div className="card-body bg-banner">
                         <div className="row">
                             <div className="col-4">
