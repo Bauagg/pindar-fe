@@ -67,7 +67,28 @@ body{
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
+  max-height: 320px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
+
+/* Tambahan responsif */
+@media (max-width: 1200px) {
+  .banner-image {
+    max-height: 250px;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-image {
+    max-height: 155px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
 
 /* Dot aktif warna oranye */
 .slick-dots li.slick-active button:before {

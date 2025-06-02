@@ -31,9 +31,17 @@ const BannerCarousel = () => {
     speed: 500,
     autoplay: true,
     autoplaySpeed: 3000,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 768, // mobile
+        settings: {
+          slidesToShow: 2
+        }
+      }
+    ]
   };
 
   return (
@@ -45,7 +53,7 @@ const BannerCarousel = () => {
               <img
                 src={`https://be.pindar.id/api${banner.imageLink}`}
                 alt="Banner"
-                style={{ width: '100%', borderRadius: '30px', objectFit: 'cover', maxHeight: '600px', paddingLeft: '10px', paddingRight: '10px' }}
+                className='banner-image'
               />
             </a>
           </div>
