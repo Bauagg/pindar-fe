@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import Navbars from "./component/Navbar";
+import BannerCarousel from './component/bannerPopular';
+import BannerDealCarousel from './component/bannerDeals';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -53,22 +55,11 @@ const Login = () => {
 
                 <div className="mt-4">
                     <h5 className="ms-4">Popular Plus</h5>
-                    <div className="card-body bg-banner">
-                        <div className="row">
-                            <div className="col-4">
-                                <img src="../img/family.png" alt="family"  className="img-fluid"/>
-                            </div>
-                            <div className="col-8 my-auto">
-                                <h6 className="title-life text-white">Life Insurance</h6>
-                                <h3 className="title-popular text-white">Masa Depan Aman, Mulai Rp100K/Bulan!</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="dots">
-                        <span className="dot active"></span>
-                        <span className="dot"></span>
-                        <span className="dot"></span>
-                    </div>
+                     <BannerCarousel />
+                </div>
+                <div className="mt-4">
+                    <h5 className="ms-4">Popular Deal</h5>
+                     <BannerDealCarousel />
                 </div>
                 
             </div>
