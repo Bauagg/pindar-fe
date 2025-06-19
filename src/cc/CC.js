@@ -381,7 +381,7 @@ const DataCC = () => {
                                 <div className="col-sm-10 px-4 py-3">
                                 <div className="row">
                                     <div className="col-sm-4 d-flex">
-                                    <img src={`https://be.pindar.id/api${item.imageLink}`} className="img-fluid" style={{width: '61px'}} alt="logo" />
+                                    <img src={`https://be.pindar.id/api${item.imageLink}`} className="img-fluid" style={{height: '100px'}} alt="logo" />
                                     <h6 className="mx-3 my-auto">
                                         <b>{item.title}</b>
                                     </h6>

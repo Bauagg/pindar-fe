@@ -24,20 +24,23 @@ const Login = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-6 mx-auto">
-                        <div className="d-flex justify-content-around">
-                            <div onClick={handlePindar} className="mx-2" style={{cursor: 'pointer'}}>
+                        <div className="row justify-content-center text-center">
+                            <div onClick={handlePindar} className="col-6 col-md-4" style={{ cursor: 'pointer' }}>
                                 <div className="bg-red-white">
-                                    <img src="../img/pindar.png" ></img>
+                                    <img src="../img/pindar.png" className="img-fluid" alt="Pindar" />
                                 </div>
-                                <h4 className="title-life mt-4" style={{color: '#474864'}} >Pindar</h4>
+                                <div>
+                                    <h4 className="title-life mt-4" style={{ color: '#474864' }}>Pindar</h4>
+                                </div>
                             </div>
-                            <div onClick={handleCC} className="mx-2" style={{cursor: 'pointer'}}>
+                            <div onClick={handleCC} className="col-6 col-md-4" style={{ cursor: 'pointer' }}>
                                 <div className="bg-red-white">
-                                    <img src="../img/cc.png" ></img>
+                                    <img src="../img/cc.png" className="img-fluid" alt="Kartu Kredit" />
                                 </div>
-                                <h4 className="title-life mt-4" style={{color: '#474864'}}>Kartu Kredit</h4>
+                                <h4 className="title-life mt-4" style={{ color: '#474864' }}>Kartu Kredit</h4>
                             </div>
                         </div>
+
                     </div>
                 </div>
 

@@ -107,8 +107,6 @@ body{
 
 
 .bg-red-white{
-  width: 96px;
-  height: 95px;
   border-radius: 24px;
   background: linear-gradient(172.52deg, rgba(204, 28, 34, 0.89) 5.8%, rgba(204, 28, 34, 0.04) 78.66%);
 }
