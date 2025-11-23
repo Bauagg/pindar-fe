@@ -9,6 +9,7 @@ const CCAjukan = () => {
   const img = sessionStorage.getItem('imgdetail');
   const lendername = sessionStorage.getItem('titlecc');
   
+  
   useEffect(() => {
     if (!link) {
       // Jika link tidak ditemukan di sessionStorage, arahkan ke halaman CC

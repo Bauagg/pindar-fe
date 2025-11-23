@@ -19,6 +19,7 @@ import CCAjukan from "./cc/CC_redirect";
 
 import Education from "./education/Education";
 import EducationDetail from "./education/Education_detail";
+import CCAjukanCopy from "./cc/CC_redirect_copy";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/cccompere" element={<CCCompare />} />
         <Route path="/ccdetail" element={<CCDetail />} />
         <Route path="/ccajukan" element={<CCAjukan />} />
+         <Route path="/ccajukan/:id" element={<CCAjukanCopy />} />
         
         <Route path="/education" element={<Education />} />
         <Route path="/educationdetail" element={<EducationDetail />} />
