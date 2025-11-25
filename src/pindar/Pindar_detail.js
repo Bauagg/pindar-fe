@@ -113,7 +113,13 @@ const PindarDetail = () => {
                         </p>
 
                         <h5 className="mt-4"><b>Sekilas Mengenai {dataPindar.lenderName}</b></h5>
-                        <p>{dataPindar.additionalInformation}</p>
+                          <div dangerouslySetInnerHTML=
+                      {{
+                        __html:
+                          dataPindar?.additionalInformation || "<p>'Tidak tersedia'</p>"
+                      }}
+                      />
+                      
 
                         <h5 className="mt-4"><b>Keunggulan {dataPindar.lenderName}</b></h5>
                         <ul>
@@ -132,7 +138,13 @@ const PindarDetail = () => {
                     ) : (
                       <>
                         <h5><b>Syarat & Dokumen</b></h5>
-                        <p>{dataPindar.termsDocument || "Tidak ada informasi syarat & dokumen."}</p>
+                        <div dangerouslySetInnerHTML=
+                      {{
+                        __html:
+                          dataPindar?.termsDocument || "<p>'Tidak ada informasi syarat & dokumen.'</p>"
+                      }}
+                      />
+                       
                       </>
                     )}
                   </div>
