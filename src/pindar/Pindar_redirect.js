@@ -1,14 +1,14 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../App.css';
+import "../App.css";
 import Navbars from "../component/Navbar";
 
 const PindarAjukan = () => {
   const [count, setCount] = useState(5);
-  const link = sessionStorage.getItem('linkdetail');
-  const img = sessionStorage.getItem('imgdetail');
-  const lendername = sessionStorage.getItem('lendername');
-  
+  const link = sessionStorage.getItem("linkdetail");
+  const img = sessionStorage.getItem("imgdetail");
+  const lendername = sessionStorage.getItem("lendername");
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCount((prev) => {
@@ -27,46 +27,72 @@ const PindarAjukan = () => {
     window.location.href = link;
   };
 
+  console.log(link, 'ini;ik')
+
   return (
     <div>
-        <Navbars />
-        <div className="">
-          <div style={{ textAlign: 'center', marginTop: '15%' }}>
-            <img src={img} alt="akulaku" width="60" />
-            <h5 className="mt-3">{lendername}</h5>
-            <p>Anda akan dialihkan ke halaman aplikasi</p>
-
-            {/* Progress bar */}
-            <div style={{
-              width: '200px',
-              height: '12px',
-              backgroundColor: '#eee',
-              borderRadius: '50px',
-              margin: '20px auto',
-              overflow: 'hidden'
-            }}>
-              <div style={{
-                width: `${(5 - count) * 20}%`,
-                height: '100%',
-                background: 'linear-gradient(90deg, #CC1C22, #F86469)',
-                transition: 'width 1s linear'
-              }} />
-            </div>
-
-            <p>
-              Jika anda tidak dialihkan dalam waktu {count} detik,
-              <br />
-              <button style={{
-                border: 'none',
-                background: 'none',
-                color: '#CC1C22',
-                textDecoration: 'underline',
-                cursor: 'pointer',
-                fontWeight: 'bold'
-              }} onClick={handleClick}>klik di sini untuk melanjutkan</button>
+      <Navbars />
+      <div className="">
+        <div style={{ textAlign: "center", marginTop: "15%" }}>
+          <img src={img} alt="akulaku" width="60" />
+          <h5 className="mt-3">{lendername}</h5>
+          <p>Anda akan dialihkan ke halaman aplikasi</p>
+          {link ? (
+            <>
+              {/* Progress bar */}
+              <div
+                style={{
+                  width: "200px",
+                  height: "12px",
+                  backgroundColor: "#eee",
+                  borderRadius: "50px",
+                  margin: "20px auto",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${(5 - count) * 20}%`,
+                    height: "100%",
+                    background: "linear-gradient(90deg, #CC1C22, #F86469)",
+                    transition: "width 1s linear",
+                  }}
+                />
+              </div>
+              <p>
+                Jika anda tidak dialihkan dalam waktu {count} detik,
+                <br />
+                <button
+                  style={{
+                    border: "none",
+                    background: "none",
+                    color: "#CC1C22",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                  }}
+                  onClick={handleClick}
+                >
+                  klik di sini untuk melanjutkan
+                </button>
+              </p>
+            </>
+          ) : (
+            <p
+              style={{
+                border: "none",
+                background: "none",
+                color: "#CC1C22",
+                textDecoration: "underline",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              Link redirect tidak ditemukan silahkan hubungi administrator,
             </p>
-          </div>
+          )}
         </div>
+      </div>
     </div>
   );
 };

@@ -9,46 +9,57 @@ const CCAjukanCopy = () => {
   const [count, setCount] = useState(5);
   const [dataCC, setdataCC] = useState();
   const [error, setErrorMessage] = useState();
+  const [loading, setLoading] = useState();
 
   const { id } = useParams();
-
-  const fetchdatas = async (idcc) => {
-    try {
-      const response = await api.get(`credit-card/detail/${idcc}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      setdataCC(response.data.data);
-    } catch (error) {
-      console.error("Error fetching datas:", error);
-    }
-  };
-
   useEffect(() => {
     if (id) {
       fetchdatas(id);
     }
   }, [id]);
 
-  useEffect(() => {
-    if (!dataCC?.redirectLink) {
-      // Jika link tidak ditemukan di sessionStorage, arahkan ke halaman CC
-      setErrorMessage("Redirect Link tidak ditemukan, hubungi administrator");
-      return;
-    }
-    const timer = setInterval(() => {
-      setCount((prev) => {
-        if (prev === 1) {
-          clearInterval(timer);
-          window.location.href = dataCC?.redirectLink;
-        }
-        return prev - 1;
+  const fetchdatas = async (idcc) => {
+    try {
+      setLoading(true);
+      const response = await api.get(`credit-card/detail/${idcc}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [!dataCC?.redirectLink]);
+      setLoading(false);
+      return response.data.data;
+      // setdataCC(response.data.data);
+    } catch (error) {
+      console.error("Error fetching datas:", error);
+    }
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetchdatas(id);
+      setdataCC(data);
+      if (data?.redirectLink != null) {
+        const timer = setInterval(() => {
+          setCount((prev) => {
+            if (prev === 1) {
+              clearInterval(timer);
+              window.location.href = data?.redirectLink;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+        return () => clearInterval(timer);
+      } else if (data?.redirectLink == null) {
+        // Jika link tidak ditemukan di sessionStorage, arahkan ke halaman CC
+        setErrorMessage(
+          "Redirect Link tidak ditemukan, silahkan hubungi administrator"
+        );
+        return;
+      }
+    };
+
+    getData();
+  }, [id]);
 
   const handleClick = () => {
     if (!dataCC?.redirectLink) {
@@ -63,70 +74,75 @@ const CCAjukanCopy = () => {
     <div>
       <Navbars />
       <div className="">
-        {}
-        <div style={{ textAlign: "center", marginTop: "15%" }}>
-          <img
-            src={`https://be.pindar.id/api${dataCC?.imageLink}`}
-            alt="Kartu Kredit Imagex"
-            width="120"
-          />
-          <h5 className="mt-3">{dataCC?.title}</h5>
-          <p>Anda akan dialihkan ke halaman aplikasi</p>
+        {loading ? (
+          <div style={{ textAlign: "center", marginTop: "15%" }}>
+            Loading ...
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", marginTop: "15%" }}>
+            <img
+              src={`https://be.pindar.id/api${dataCC?.imageLink}`}
+              alt="Kartu Kredit Imagex"
+              width="120"
+            />
+            <h5 className="mt-3">{dataCC?.title}</h5>
+            {error ? "" : <p>Anda akan dialihkan ke halaman aplikasi</p>}
 
-          {error ? (
-            <p
-              style={{
-                color: "#CC1C22",
-
-                fontWeight: "bold",
-              }}
-              className="text-red"
-            >
-              {error}
-            </p>
-          ) : (
-            <>
-              {/* Progress bar */}
-              <div
+            {error ? (
+              <p
                 style={{
-                  width: "200px",
-                  height: "12px",
-                  backgroundColor: "#eee",
-                  borderRadius: "50px",
-                  margin: "20px auto",
-                  overflow: "hidden",
+                  color: "#CC1C22",
+
+                  fontWeight: "bold",
                 }}
+                className="text-red"
               >
+                {error}
+              </p>
+            ) : (
+              <>
+                {/* Progress bar */}
                 <div
                   style={{
-                    width: `${(5 - count) * 20}%`,
-                    height: "100%",
-                    background: "linear-gradient(90deg, #CC1C22, #F86469)",
-                    transition: "width 1s linear",
+                    width: "200px",
+                    height: "12px",
+                    backgroundColor: "#eee",
+                    borderRadius: "50px",
+                    margin: "20px auto",
+                    overflow: "hidden",
                   }}
-                />
-              </div>
-
-              <p>
-                Jika anda tidak dialihkan dalam waktu {count} detik,
-                <br />
-                <button
-                  style={{
-                    border: "none",
-                    background: "none",
-                    color: "#CC1C22",
-                    textDecoration: "underline",
-                    cursor: "pointer",
-                    fontWeight: "bold",
-                  }}
-                  onClick={handleClick}
                 >
-                  klik di sini untuk melanjutkan
-                </button>
-              </p>
-            </>
-          )}
-        </div>
+                  <div
+                    style={{
+                      width: `${(5 - count) * 20}%`,
+                      height: "100%",
+                      background: "linear-gradient(90deg, #CC1C22, #F86469)",
+                      transition: "width 1s linear",
+                    }}
+                  />
+                </div>
+
+                <p>
+                  Jika anda tidak dialihkan dalam waktu {count} detik,
+                  <br />
+                  <button
+                    style={{
+                      border: "none",
+                      background: "none",
+                      color: "#CC1C22",
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                      fontWeight: "bold",
+                    }}
+                    onClick={handleClick}
+                  >
+                    klik di sini untuk melanjutkan
+                  </button>
+                </p>
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

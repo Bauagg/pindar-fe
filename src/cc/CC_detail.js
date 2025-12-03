@@ -44,13 +44,13 @@ const CCDetail = () => {
   };
 
   const handleAjukan = (item) => {
-    sessionStorage.setItem("linkdetail", "/cc");
-    sessionStorage.setItem("titlecc", dataCC.title);
-    sessionStorage.setItem(
-      "imgdetail",
-      `https://be.pindar.id/api${dataCC.imageLink}`
-    );
-    navigate("/pindarajukan"); // pastikan useNavigate dari react-router-dom
+    // sessionStorage.setItem("linkdetail", "/cc");
+    // sessionStorage.setItem("titlecc", dataCC.title);
+    // sessionStorage.setItem(
+    //   "imgdetail",
+    //   `https://be.pindar.id/api${dataCC.imageLink}`
+    // );
+    navigate(`/ccajukan/${item.id}`); // pastikan useNavigate dari react-router-dom
   };
 
   return (
@@ -89,7 +89,7 @@ const CCDetail = () => {
                 <button
                   type="button"
                   className="btn btn-detail-ajukan"
-                  onClick={() => handleAjukan(dataCC.directLink)}
+                  onClick={() => handleAjukan(dataCC)}
                 >
                   <b>Ajukan Sekarang</b>
                 </button>
