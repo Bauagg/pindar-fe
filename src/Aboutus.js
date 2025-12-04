@@ -15,7 +15,7 @@ const Aboutus = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log(response.data.data);
+      
       
       setdata(response.data.data);
   
