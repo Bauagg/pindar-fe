@@ -166,14 +166,14 @@ const DataCC = () => {
   };
 
   const handleAjukan = (item) => {
-    console.log(item)
+    console.log(item);
     sessionStorage.setItem("linkdetail", item.redirectLink);
     sessionStorage.setItem("lendername", item.title);
     sessionStorage.setItem(
       "imgdetail",
       `https://be.pindar.id${item.imageLink}`
     );
-    navigate(`/ccajukan/${item.id}`); 
+    navigate(`/ccajukan/${item.id}`);
     // pastikan useNavigate dari react-router-dom
   };
 
@@ -188,9 +188,9 @@ const DataCC = () => {
       <div className="bg-light">
         <div className="container-fluid card-shadow">
           <h5 className="text-popins">
-            Home &gt; Credit Card &gt; Semua Credit Card
+            Home &gt; Kartu Kredit &gt; Semua Kartu Kredit
           </h5>
-          <h3 className="title-lexend">Credit Card</h3>
+          <h3 className="title-lexend">Kartu Kredit</h3>
         </div>
 
         <div className="conatiner-fluid mt-5 container-page">
@@ -407,13 +407,18 @@ const DataCC = () => {
                   <div className="row">
                     <div className="col-sm-10 px-4 py-3">
                       <div className="row">
-                        <div className="col-sm-4 d-flex">
+                        <div className="col-sm-4 d-flex align-items-center">
                           <img
                             src={`https://be.pindar.id/api${item.imageLink}`}
                             className="img-fluid"
-                            style={{ height: "100px" }}
+                            style={{
+                              height: "120px",
+                              width: "100%",
+                              objectFit: "contain",
+                            }}
                             alt="logo"
                           />
+
                           <h6 className="mx-3 my-auto">
                             <b>{item.title}</b>
                           </h6>

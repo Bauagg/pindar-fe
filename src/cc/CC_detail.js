@@ -58,7 +58,7 @@ const CCDetail = () => {
       <Navbars />
       <div className="bg-light">
         <div className="container-fluid card-shadow">
-          <h5 className="text-popins">Home &gt; Credit Card &gt; Detail</h5>
+          <h5 className="text-popins">Home &gt; Kartu Kredit &gt; Detail</h5>
           <h3 className="title-lexend">{dataCC.title}</h3>
         </div>
 
@@ -71,7 +71,7 @@ const CCDetail = () => {
                   src={`https://be.pindar.id/api${dataCC.imageLink}`}
                   alt="logo"
                   className="img-detail mb-3"
-                  style={{ maxWidth: "150px" }}
+                  style={{ width: "100%", objectFit:"contain" }}
                 />
                 <br />
                 <h4 className="title-lexend">{dataCC.title}</h4>
@@ -103,7 +103,7 @@ const CCDetail = () => {
                   <button onClick={() => toggleSection("detail")}>
                     Detail Informasi
                   </button>
-                  {openSection === "detail" && (
+                  
                     <div className="accordion-content">
                       <div
                         dangerouslySetInnerHTML={{
@@ -113,30 +113,30 @@ const CCDetail = () => {
                         }}
                       />
                     </div>
-                  )}
+                
                 </div>
 
                 <div className="accordion-section my-4">
                   <button onClick={() => toggleSection("features")}>
                     Fitur Utama
                   </button>
-                  {openSection === "features" && (
+                  
                     <div className="accordion-content">
-                      <div dangerouslySetInnerHTML=
-                      {{
-                        __html:
-                          dataCC?.mainFeature || "<p>'Tidak tersedia'</p>"
-                      }}
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            dataCC?.mainFeature || "<p>'Tidak tersedia'</p>",
+                        }}
                       />
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="accordion-section my-4">
                   <button onClick={() => toggleSection("facilities")}>
                     Fasilitas Kartu
                   </button>
-                  {openSection === "facilities" && (
+                  
                     <div className="accordion-content">
                       <ul>
                         {dataCC.features && dataCC.features.length > 0 ? (
@@ -146,14 +146,14 @@ const CCDetail = () => {
                         )}
                       </ul>
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="accordion-section my-4">
                   <button onClick={() => toggleSection("fees")}>
                     Biaya & Denda
                   </button>
-                  {openSection === "fees" && (
+               
                     <div className="accordion-content">
                       <p>
                         <b>Iuran Tahunan:</b> {formatRupiah(dataCC.yearlyFee)}
@@ -177,14 +177,14 @@ const CCDetail = () => {
                         {dataCC.latePaymentAdminCharge}
                       </p>
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="accordion-section my-4">
                   <button onClick={() => toggleSection("requirements")}>
                     Persyaratan
                   </button>
-                  {openSection === "requirements" && (
+                 
                     <div className="accordion-content">
                       <p>
                         <b>Pendapatan Bulanan Minimum:</b>{" "}
@@ -207,16 +207,16 @@ const CCDetail = () => {
                         {dataCC.additionalCardMinimumAge}
                       </p>
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="accordion-section my-4">
                   <button onClick={() => toggleSection("howto")}>
                     Cara Pengajuan
                   </button>
-                  {openSection === "howto" && (
+                 
                     <div className="accordion-content">
-                       <div
+                      <div
                         dangerouslySetInnerHTML={{
                           __html:
                             dataCC?.detailInformation ||
@@ -224,7 +224,7 @@ const CCDetail = () => {
                         }}
                       />
                     </div>
-                  )}
+                
                 </div>
               </div>
             </div>

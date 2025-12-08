@@ -98,8 +98,8 @@ const CCCompare = () => {
         <Navbars />
         <div className="bg-light">
             <div className="container-fluid card-shadow">
-                <h5 className="text-popins">Home &gt; Credit Card &gt; Komparasi Credit Card</h5>
-                <h3 className="title-lexend">Komparasi Credit Card</h3>
+                <h5 className="text-popins">Home &gt; Kartu Kredit &gt; Komparasi Kartu Kredit</h5>
+                <h3 className="title-lexend">Komparasi Kartu Kredit</h3>
             </div>
 
             <div className="container my-4">

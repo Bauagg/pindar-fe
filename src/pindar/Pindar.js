@@ -213,6 +213,9 @@ const Pindar = () => {
     navigate("/pindarcompere"); // pastikan useNavigate dari react-router-dom
   };
 
+
+
+
   return (
     <div>
       <Navbars search={search} onSearchChange={handleSearch} />
@@ -256,7 +259,7 @@ const Pindar = () => {
                   </label>
                 </div>
 
-                {loanAmountData.map((item, index) => (
+                {loanAmountData?.filter((i)=> i.name !== 'LOAN_TYPE_3')?.map((item, index) => (
                   <div className="form-check mb-2" key={item.name}>
                     <input
                       className="form-check-input form-red"
@@ -371,7 +374,7 @@ const Pindar = () => {
                           <img
                             src={`https://be.pindar.id${item.imagelink}`}
                             className="img-fluid"
-                            style={{ width: "61px" }}
+                            style={{ maxWidth: "150px", height:'100px', objectFit:"contain" }}
                             alt="logo"
                           />
                           <h6 className="mx-3 my-auto">

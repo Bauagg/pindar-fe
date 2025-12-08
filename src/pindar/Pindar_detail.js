@@ -65,9 +65,13 @@ const PindarDetail = () => {
                       src={`https://be.pindar.id/api${dataPindar.imageLink}`}
                       alt="logo"
                       className="img-detail mb-3"
-                      style={{ maxWidth: "150px" }}
+                      style={{ width: "100%", height:'150px', objectFit:"contain" }}
                     />
-                  <button type="button" className="btn btn-detail-ajukan" onClick={() => handleAjukan(dataPindar.directLink)}><b>Ajukan Sekarang</b></button>
+                  <button type="button"
+                  style={{
+
+                  }}
+                  className="btn btn-detail-ajukan-copy" onClick={() => handleAjukan(dataPindar.directLink)}><b>Ajukan Sekarang</b></button>
                   </div>
                 </div>
 
