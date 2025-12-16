@@ -47,6 +47,8 @@ const PindarDetail = () => {
         navigate("/pindarajukan"); // pastikan useNavigate dari react-router-dom
       };
 
+      // TESTUING
+
   return (
     <div>
         <Navbars />
