@@ -35,9 +35,9 @@ jobs:
             git fetch origin main && \
             git reset --hard origin/main && \
             cd ${DEPLOY_PATH} && \
-            docker compose down frontend || true && \
-            docker system prune -f && \
-            docker compose up -d --build frontend && \
+            docker compose rm -sf frontend || true && \
+            docker compose build --no-cache frontend && \
+            docker compose up -d --force-recreate frontend && \
             echo 'Waiting for container to start...' && \
             sleep 10 && \
             docker compose logs frontend --tail 50
