@@ -21,6 +21,8 @@ import Education from "./education/Education";
 import EducationDetail from "./education/Education_detail";
 import CCAjukanCopy from "./cc/CC_redirect_copy";
 
+// console.log('Halooo')
+
 function App() {
   return (
     <Router>
