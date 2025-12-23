@@ -84,7 +84,7 @@ const Login = () => {
                 <h5 className="title-trending">Trending Products</h5>
                 <small>Last Date 29/02/2025</small>
               </div>
-              <button onClick={handleViewAllEdukasi} className="btn btn-sm">
+              <button onClick={handleViewAll} className="btn btn-sm">
                 View all →
               </button>
             </div>
@@ -99,7 +99,7 @@ const Login = () => {
               }}
             >
               <h5 className="ms-4">Aplikasi Rekomendasi</h5>
-              <button onClick={handleViewAll} className="btn btn-sm">
+              <button onClick={handlePindar} className="btn btn-sm">
                 View all →
               </button>
             </div>
@@ -117,7 +117,7 @@ const Login = () => {
               }}
             >
               <h5 className="ms-4">Education Product</h5>
-              <button onClick={handleViewAll} className="btn btn-sm">
+              <button onClick={handleViewAllEdukasi} className="btn btn-sm">
                 View all →
               </button>
             </div>
