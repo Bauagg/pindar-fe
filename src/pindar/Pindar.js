@@ -227,7 +227,7 @@ const Pindar = () => {
           <h3 className="title-lexend">Pinjaman</h3>
         </div>
 
-        <div className="conatiner-fluid mt-5 container-page">
+        <div className="conatiner-fluid container-page-mobile">
           <div className="row">
             <div className="col-sm-2">
               <div className="card-filter">
@@ -240,7 +240,7 @@ const Pindar = () => {
                     className="btn"
                     onClick={handleSelectAll}
                   >
-                    <small className="text-red">Select All</small>
+                    <small className="text-red text-nowrap">Select All</small>
                   </button>
                 </div>
                 <h6>
@@ -314,13 +314,13 @@ const Pindar = () => {
                 ))}
               </div>
 
-              <div className="card-filter mt-4">
+              <div className="card-filter my-3">
                 <div className="d-flex justify-content-between mb-3">
                   <h4>
                     <b>Urutkan</b>
                   </h4>
                   <button type="button" className="btn">
-                    <small className="text-red">Select All</small>
+                    <small className="text-red text-nowrap">Select All</small>
                   </button>
                 </div>
                 <div className="form-check mb-2">

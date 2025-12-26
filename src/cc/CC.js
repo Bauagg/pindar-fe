@@ -193,7 +193,7 @@ const DataCC = () => {
           <h3 className="title-lexend">Kartu Kredit</h3>
         </div>
 
-        <div className="conatiner-fluid mt-5 container-page">
+        <div className="conatiner-fluid  container-page-mobile">
           <div className="row">
             <div className="col-sm-2">
               <div className="card-filter">
@@ -206,7 +206,7 @@ const DataCC = () => {
                     className="btn"
                     onClick={handleSelectAll}
                   >
-                    <small className="text-red">Select All</small>
+                    <small className="text-red text-nowrap">Select All</small>
                   </button>
                 </div>
                 <h6>
@@ -357,7 +357,7 @@ const DataCC = () => {
                     <b>Urutkan</b>
                   </h4>
                   <button type="button" className="btn">
-                    <small className="text-red">Select All</small>
+                    <small className="text-red text-nowrap">Select All</small>
                   </button>
                 </div>
                 <div className="form-check mb-2">
