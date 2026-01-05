@@ -20,6 +20,11 @@ const Login = () => {
     navigate("/cc");
   };
 
+  const handlePinjamanBank = () => {
+    // Setelah login berhasil
+    navigate("/coming-soon");
+  };
+
   const handleViewAll = () => {
     // Setelah login berhasil
     navigate("/cc");
@@ -36,7 +41,7 @@ const Login = () => {
         <div className="container">
           <div className="row">
             <div className="col-6 mx-auto">
-              <div className="row justify-content-center text-center">
+              <div className="row  justify-content-center text-center flex-nowrap">
                 <div
                   onClick={handlePindar}
                   className="col-6 col-md-4"
@@ -44,9 +49,10 @@ const Login = () => {
                 >
                   <div className="bg-red-white">
                     <img
-                      src="../img/pindar.png"
+                      src="../img/pindar.svg"
                       className="img-fluid"
                       alt="Pindar"
+                      style={{ height: "auto", width: "150px" }}
                     />
                   </div>
                   <div>
@@ -54,10 +60,11 @@ const Login = () => {
                       className="title-life mt-4"
                       style={{ color: "#474864" }}
                     >
-                      Pindar
+                      Pinjaman Daring
                     </h4>
                   </div>
                 </div>
+
                 <div
                   onClick={handleCC}
                   className="col-6 col-md-4"
@@ -65,13 +72,32 @@ const Login = () => {
                 >
                   <div className="bg-red-white">
                     <img
-                      src="../img/cc.png"
+                      src="../img/kreditcard.svg"
                       className="img-fluid"
                       alt="Kartu Kredit"
+                      style={{ height: "auto", width: "150px" }}
                     />
                   </div>
                   <h4 className="title-life mt-4" style={{ color: "#474864" }}>
                     Kartu Kredit
+                  </h4>
+                </div>
+
+                <div
+                  onClick={handlePinjamanBank}
+                  className="col-6 col-md-4"
+                  style={{ cursor: "pointer" }}
+                >
+                  <div className="bg-red-white">
+                    <img
+                      src="../img/pinjaman_bank.svg"
+                      className="img-fluid"
+                      alt="Kartu Kredit"
+                      style={{ height: "auto", width: "150px" }}
+                    />
+                  </div>
+                  <h4 className="title-life mt-4" style={{ color: "#474864" }}>
+                    Pinjaman Bank
                   </h4>
                 </div>
               </div>

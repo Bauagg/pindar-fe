@@ -20,6 +20,7 @@ import CCAjukan from "./cc/CC_redirect";
 import Education from "./education/Education";
 import EducationDetail from "./education/Education_detail";
 import CCAjukanCopy from "./cc/CC_redirect_copy";
+import CoomingSoon from "./CoomingSoon";
 
 // console.log('Halooo')
 
@@ -28,6 +29,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/coming-soon" element={<CoomingSoon />} />
         <Route path="/notifikasi" element={<Notifikasi />} />
         <Route path="/tnc" element={<TandC />} />
         <Route path="/privacypolicy" element={<PrivacyPolis />} />
