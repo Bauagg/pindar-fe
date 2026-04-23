@@ -118,7 +118,7 @@ const Pindar = () => {
   const fetchLoanAmounts = async () => {
     try {
       const response = await api.get(
-        "https://be.pindar.id/api/parameter/group/LENDER_LOAN_TYPE",
+        `${process.env.REACT_APP_API_URL}/api/parameter/group/LENDER_LOAN_TYPE`,
         {
           headers: { "Content-Type": "application/json" },
         }
@@ -203,7 +203,7 @@ const Pindar = () => {
     sessionStorage.setItem("lendername", item.lendername);
     sessionStorage.setItem(
       "imgdetail",
-      `https://be.pindar.id${item.imagelink}`
+      `${process.env.REACT_APP_API_URL}${item.imagelink}`
     );
     navigate("/pindarajukan"); // pastikan useNavigate dari react-router-dom
   };
@@ -372,7 +372,7 @@ const Pindar = () => {
                       <div className="row">
                         <div className="col-sm-4 d-flex">
                           <img
-                            src={`https://be.pindar.id${item.imagelink}`}
+                            src={`${process.env.REACT_APP_API_URL}${item.imagelink}`}
                             className="img-fluid"
                             style={{ maxWidth: "150px", height:'100px', objectFit:"contain" }}
                             alt="logo"
@@ -491,7 +491,7 @@ const Pindar = () => {
                         className="d-flex align-items-center mx-2"
                       >
                         <img
-                          src={`https://be.pindar.id${item.imagelink}`}
+                          src={`${process.env.REACT_APP_API_URL}${item.imagelink}`}
                           alt={item.lendername}
                           style={{ width: "30px", height: "30px" }}
                         />

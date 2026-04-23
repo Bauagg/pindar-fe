@@ -66,7 +66,7 @@ const BannerApplication = () => {
         {eduactionsList?.map((banner) => (
           <div onClick={() => handleClickButton(banner)} key={banner.id}>
             <img
-              src={`https://be.pindar.id${banner?.imagelink}`}
+              src={`${process.env.REACT_APP_API_URL}${banner?.imagelink}`}
               alt="Banner"
               className="banner-custom-image"
             />

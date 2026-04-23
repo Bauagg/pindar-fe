@@ -8,7 +8,7 @@ import Navbars from "../component/Navbar";
 const CCCompare = () => {
   const navigate = useNavigate();
   const [compareData, setCompareData] = useState([]);
-  const baseURL = "https://be.pindar.id/api";
+  const baseURL = `${process.env.REACT_APP_API_URL}/api`;
 
   useEffect(() => {
     const fetchAllDetails = async () => {

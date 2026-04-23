@@ -51,7 +51,7 @@ const BannerCarousel = () => {
           <div key={banner.id}>
             <a href={banner.url} target="_blank" rel="noopener noreferrer">
               <img
-                src={`https://be.pindar.id/api${banner.imageLink}`}
+                src={`${process.env.REACT_APP_API_URL}/api${banner.imageLink}`}
                 alt="Banner"
                 className='banner-image'
               />

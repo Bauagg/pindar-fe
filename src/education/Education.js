@@ -117,7 +117,7 @@ const Education = () => {
                       {paginated.slice(0, 2).map((item) => (
                          <div key={item.id} className="mb-4">
                           <img
-                            src={item.imageLink ? `https://be.pindar.id/api${item.imageLink}` : "https://placehold.co/600x400"}
+                            src={item.imageLink ? `${process.env.REACT_APP_API_URL}/api${item.imageLink}` : "https://placehold.co/600x400"}
                             className="img-fluid mb-2"
                             alt={item.title}
                             style={{borderRadius: '24px'}}
@@ -154,7 +154,7 @@ const Education = () => {
                             onClick={() => handleDetail(item)} // ← penting: gunakan arrow function
                           >
                             <img
-                              src={item.imageLink ? `https://be.pindar.id/api${item.imageLink}` : "https://placehold.co/600x400"}
+                              src={item.imageLink ? `${process.env.REACT_APP_API_URL}/api${item.imageLink}` : "https://placehold.co/600x400"}
                               alt={item.title}
                               width="80"
                               height="60"

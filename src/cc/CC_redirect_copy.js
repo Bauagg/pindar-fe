@@ -81,7 +81,7 @@ const CCAjukanCopy = () => {
         ) : (
           <div style={{ textAlign: "center", marginTop: "15%" }}>
             <img
-              src={`https://be.pindar.id/api${dataCC?.imageLink}`}
+              src={`${process.env.REACT_APP_API_URL}/api${dataCC?.imageLink}`}
               alt="Kartu Kredit Imagex"
               width="120"
             />

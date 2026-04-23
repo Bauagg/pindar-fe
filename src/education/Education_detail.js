@@ -53,7 +53,7 @@ const PindarDetail = () => {
               <img
                 src={
                   dataEducation.imageLink
-                    ? `https://be.pindar.id/api${dataEducation.imageLink}`
+                    ? `${process.env.REACT_APP_API_URL}/api${dataEducation.imageLink}`
                     : "https://placehold.co/600x400"
                 }
                 className="img-fluid mb-2"

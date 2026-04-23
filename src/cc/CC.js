@@ -171,7 +171,7 @@ const DataCC = () => {
     sessionStorage.setItem("lendername", item.title);
     sessionStorage.setItem(
       "imgdetail",
-      `https://be.pindar.id${item.imageLink}`
+      `${process.env.REACT_APP_API_URL}${item.imageLink}`
     );
     navigate(`/ccajukan/${item.id}`);
     // pastikan useNavigate dari react-router-dom
@@ -409,7 +409,7 @@ const DataCC = () => {
                       <div className="row">
                         <div className="col-sm-4 d-flex align-items-center">
                           <img
-                            src={`https://be.pindar.id/api${item.imageLink}`}
+                            src={`${process.env.REACT_APP_API_URL}/api${item.imageLink}`}
                             className="img-fluid"
                             style={{
                               height: "120px",
@@ -547,7 +547,7 @@ const DataCC = () => {
                         className="d-flex align-items-center mx-2"
                       >
                         <img
-                          src={`https://be.pindar.id/api${item.imageLink}`}
+                          src={`${process.env.REACT_APP_API_URL}/api${item.imageLink}`}
                           alt={item.title}
                           style={{ width: "30px", height: "30px" }}
                         />

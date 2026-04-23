@@ -43,7 +43,7 @@ const PindarDetail = () => {
       const handleAjukan = (item) => {
         sessionStorage.setItem('linkdetail', item);
         sessionStorage.setItem('lendername', dataPindar.lenderName);
-        sessionStorage.setItem('imgdetail', `https://be.pindar.id/api${dataPindar.imageLink}`);
+        sessionStorage.setItem('imgdetail', `${process.env.REACT_APP_API_URL}/api${dataPindar.imageLink}`);
         navigate("/pindarajukan"); // pastikan useNavigate dari react-router-dom
       };
 
@@ -64,7 +64,7 @@ const PindarDetail = () => {
                 <div className="col-md-3 text-center">
                   <div className="card-detail">
                     <img
-                      src={`https://be.pindar.id/api${dataPindar.imageLink}`}
+                      src={`${process.env.REACT_APP_API_URL}/api${dataPindar.imageLink}`}
                       alt="logo"
                       className="img-detail mb-3"
                       style={{ width: "100%", height:'150px', objectFit:"contain" }}

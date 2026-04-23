@@ -48,7 +48,7 @@ const CCDetail = () => {
     // sessionStorage.setItem("titlecc", dataCC.title);
     // sessionStorage.setItem(
     //   "imgdetail",
-    //   `https://be.pindar.id/api${dataCC.imageLink}`
+    //   `${process.env.REACT_APP_API_URL}/api${dataCC.imageLink}`
     // );
     navigate(`/ccajukan/${item.id}`); // pastikan useNavigate dari react-router-dom
   };
@@ -68,7 +68,7 @@ const CCDetail = () => {
             <div className="col-md-3 text-center">
               <div className="card-detail">
                 <img
-                  src={`https://be.pindar.id/api${dataCC.imageLink}`}
+                  src={`${process.env.REACT_APP_API_URL}/api${dataCC.imageLink}`}
                   alt="logo"
                   className="img-detail mb-3"
                   style={{ width: "100%", objectFit:"contain" }}
